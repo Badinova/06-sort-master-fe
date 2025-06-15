@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div className="p-10 px-5 max-w-3xl mx-auto font-serif text-gray-800 leading-relaxed bg-gray-300 rounded-4xl">
+        <div className="p-10 px-5 max-w-3xl mx-auto font-serif text-gray-800 leading-relaxed bg-gray-300 rounded-4xl border-2 border-gray-400 shadow-lg">
             <h1 className="text-5xl font-bold text-teal-500 mb-6">About SortMeister</h1>
 
             <p>
@@ -22,7 +22,7 @@ export default function About() {
                 <li>Repeat and improve your sorting skills!</li>
             </ol>
 
-            <h2 className="text-xl font-semibold text-teal-600 mt-8"> Who Is It For?</h2>
+            <h2 className="text-xl font-semibold text-teal-600 mt-8 right-2"> Who Is It For?</h2>
             <p className="mt-3">
                 Students, teachers, families — anyone who wants to make a positive impact on the planet. A simple habit like sorting waste can make a big difference!
             </p>
