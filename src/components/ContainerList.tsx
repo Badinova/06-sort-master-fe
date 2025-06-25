@@ -1,11 +1,8 @@
-import React, {useEffect, useState} from "react";
 
-interface Container {
-    id: string;
-    color: string;
-    name: string;
-    description: string;
-}
+import type Container from "../common/types/Container.ts";
+import ContainerCard from "./ContainerCard.tsx";
+import {useEffect, useState} from "react";
+
 
 interface ItemInputs {
     [containerId: string]: string;
@@ -90,28 +87,24 @@ const ContainerList = () => {
             )}
             <ul className="space-y-4">
                 {containers.map((container: Container) => (
-                    <li
-                        key={container.id}
-                        className="relative p-4 rounded-lg shadow-md text-white"
-                        style={{backgroundColor: container.color}}
-                    >
-                        <button onClick={() => handleDelete(container.id)}
-                                className="absolute top-2 right-2 bg-red-500 hover:bg-red-700 text-white text-xs px-2 py-1 rounded"
-                        >
-                            Remove container
-                        </button>
-                        <h3 className="text-xl font-semibold">{container.name}</h3>
-                        <p>{container.description}</p>
-                        <input type="text" placeholder="New item name" value={itemInputs[container.id] || ""}
-                               onChange={(e) => setItemInputs((prev) => ({
-                                   ...prev,
-                                   [container.id]: e.target.value,
-                               }))}
-                               className="w-full mt-2 p-2 text-black rouded border"/>
-                        <button onClick={() => handleAddItem(container.id)}
-                                className="mt-2 bg-white text-black px-4 py-1 rounded hover:bg-gray-100">
-                            Add Item
-                        </button>
+                    <li key={container.id}>
+                        <ContainerCard container={container}>
+                            <button onClick={() => handleDelete(container.id)}
+                                    className="absolute top-2 right-2 bg-red-500 hover:bg-red-700 text-white text-xs px-2 py-1 rounded">
+                                Remove container
+                            </button>
+
+                            <input type="text" placeholder="New item name" value={itemInputs[container.id] || ""}
+                                   onChange={(e) => setItemInputs((prev) => ({
+                                       ...prev,
+                                       [container.id]: e.target.value,
+                                   }))}
+                                   className="w-full mt-2 p-2 text-black rouded border"/>
+                            <button onClick={() => handleAddItem(container.id)}
+                                    className="mt-2 bg-white text-black px-4 py-1 rounded hover:bg-gray-100">
+                                Add Item
+                            </button>
+                        </ContainerCard>
                     </li>
                 ))}
             </ul>
